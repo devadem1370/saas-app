@@ -2,9 +2,13 @@ import CompanionForm from "@/components/CompanionForm";
 import {redirect} from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 
-const NewCompanion = () => {
+const NewCompanion = async () => {
    
+    const {userId} = await auth();
+
+    if(!userId) redirect('/sign-in')
 
 
     return (
