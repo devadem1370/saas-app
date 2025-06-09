@@ -1,8 +1,9 @@
+export const dynamic = 'force-dynamic';
+
 import CompanionCard from '@/components/CompanionCard'
 import React from 'react'
 import CompanionsList from '@/components/CompanionsList'
 import Cta from '@/components/Cta'
-import { recentSessions, subjects } from '@/constants'
 import { getAllCompanions, getRecentSessions } from '@/lib/actions/companion.action'
 import { getSubjectColor } from '@/lib/utils'
 
