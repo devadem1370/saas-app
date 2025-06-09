@@ -107,35 +107,35 @@ export const getUserCompanions = async (userId: string) => {
     return data;
 }
 
-// export const newCompanionPermissions = async () => {
-//     const { userId, has } = await auth();
-//     const supabase = createSupabaseClient();
+export const newCompanionPermissions = async () => {
+    const { userId, has } = await auth();
+    const supabase = createSupabaseClient();
 
-//     let limit = 0;
+    let limit = 0;
 
-//     if(has({ plan: 'pro' })) {
-//         return true;
-//     } else if(has({ feature: "3_companion_limit" })) {
-//         limit = 3;
-//     } else if(has({ feature: "10_companion_limit" })) {
-//         limit = 10;
-//     }
+    if(has({ plan: 'pro' })) {
+        return true;
+    } else if(has({ feature: "3_companion_limit" })) {
+        limit = 3;
+    } else if(has({ feature: "10_companion_limit" })) {
+        limit = 10;
+    }
 
-//     const { data, error } = await supabase
-//         .from('companions')
-//         .select('id', { count: 'exact' })
-//         .eq('author', userId)
+    const { data, error } = await supabase
+        .from('companions')
+        .select('id', { count: 'exact' })
+        .eq('author', userId)
 
-//     if(error) throw new Error(error.message);
+    if(error) throw new Error(error.message);
 
-//     const companionCount = data?.length;
+    const companionCount = data?.length;
 
-//     if(companionCount >= limit) {
-//         return false
-//     } else {
-//         return true;
-//     }
-// }
+    if(companionCount >= limit) {
+        return false
+    } else {
+        return true;
+    }
+}
 
 // // Bookmarks
 // export const addBookmark = async (companionId: string, path: string) => {
